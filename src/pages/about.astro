@@ -1,6 +1,7 @@
 ---
-  const pageTitle = "About Me";
-  const identity = {
+ const pageTitle = "About Me";
+
+const identity = {
   firstName: "Sarah",
   country: "Canada",
   occupation: "Technical Writer",
@@ -12,6 +13,10 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -21,6 +26,18 @@ const goal = 3;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		 <title>{pageTitle}</title>
+  
+   <style define:vars={{skillColor, fontWeight, textCase}}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+    </style>
 	</head>
 	<body>
 
@@ -29,11 +46,7 @@ const goal = 3;
    <a href="/blog">Blog</a>
 
 		<h1>{pageTitle}</h1>
-    <p>Hello! I’m Suzza and I’m the writer with the mathematical muse. </p>
-    <p>Strange, right?</p>
-    <p> So often we’re told that we’re either good at Math or English. </p>
-    <p>For some reason pursuing both seems a bit out of the ordinary.</p>
-    <p> I fell in love with mathematics as a kid but we are an unlikely pair.</p>
+    
 
     <p>Here are a few facts about me:</p>
 <ul>
@@ -45,7 +58,7 @@ const goal = 3;
 </ul>
 <p>My skills are:</p>
 <ul>
-  {skills.map((skill) => <li>{skill}</li>)}
+  {skills.map((skill) => <li class="skill">{skill}</li>)}
 </ul>
 
 {happy && <p>I am happy to be learning Astro!</p>}
